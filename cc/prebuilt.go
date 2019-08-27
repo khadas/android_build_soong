@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"strings"
 	"android/soong/android"
 )
 
@@ -96,6 +97,9 @@ func (p *prebuiltLibraryLinker) link(ctx ModuleContext,
 		if p.shared() {
 			p.unstrippedOutputFile = in
 			libName := ctx.baseModuleName() + flags.Toolchain.ShlibSuffix()
+			if strings.HasSuffix(ctx.baseModuleName(), ".ta") {
+				libName = ctx.baseModuleName()
+			}
 			if p.needsStrip(ctx) {
 				stripped := android.PathForModuleOut(ctx, "stripped", libName)
 				p.strip(ctx, in, stripped, builderFlags)
