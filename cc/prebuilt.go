@@ -20,7 +20,7 @@ import (
 )
 
 func init() {
-	android.RegisterModuleType("cc_prebuilt_library_shared", prebuiltSharedLibraryFactory)
+	android.RegisterModuleType("cc_prebuilt_library_shared", PrebuiltSharedLibraryFactory)
 	android.RegisterModuleType("cc_prebuilt_library_static", prebuiltStaticLibraryFactory)
 	android.RegisterModuleType("cc_prebuilt_binary", prebuiltBinaryFactory)
 }
@@ -133,7 +133,7 @@ func (p *prebuiltLibraryLinker) disablePrebuilt() {
 
 // cc_prebuilt_library_shared installs a precompiled shared library that are
 // listed in the srcs property in the device's directory.
-func prebuiltSharedLibraryFactory() android.Module {
+func PrebuiltSharedLibraryFactory() android.Module {
 	module, _ := NewPrebuiltSharedLibrary(android.HostAndDeviceSupported)
 	return module.Init()
 }
