@@ -158,6 +158,15 @@ type variableProperties struct {
 			Host_required   []string
 			Target_required []string
 		}
+
+		CameraSupportOSD struct {
+			Cflags          []string
+			Cppflags        []string
+			Init_rc         []string
+			Required        []string
+			Host_required   []string
+			Target_required []string
+		}
 	} `android:"arch_variant"`
 }
 
@@ -250,6 +259,7 @@ type productVariables struct {
 	Debuggable                   *bool `json:",omitempty"`
 	Eng                          *bool `json:",omitempty"`
 	CameraSupportHDMI            *bool `json:",omitempty"`
+	CameraSupportOSD             *bool `json:",omitempty"`
 	Treble_linker_namespaces     *bool `json:",omitempty"`
 	Enforce_vintf_manifest       *bool `json:",omitempty"`
 	Uml                          *bool `json:",omitempty"`
